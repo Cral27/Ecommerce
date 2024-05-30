@@ -1,6 +1,5 @@
 import React, { useState } from 'react'
 import './Navbar.css'
-import logo from '../Assets/logo.png'
 import cart from '../Assets/cart_icon.png'
 import logo2 from '../Assets/techshop.png'
 
