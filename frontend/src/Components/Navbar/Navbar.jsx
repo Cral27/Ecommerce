@@ -9,6 +9,10 @@ const Navbar = () => {
 
 	const [selected, setSelected] = useState('all')
 
+	const deleteData = () => {
+		localStorage.clear()
+	}
+
   	return (
 		<div id='navbar'>
 			<Link to='/'><img src={logo} alt="" id='navbar-logo'/></Link>
@@ -19,7 +23,9 @@ const Navbar = () => {
 				<li onClick={() => {setSelected('headphones')}} style={selected === 'headphones' ? {borderBottom:"3px solid #ff4141"} : null}><Link style={{textDecoration: 'none', color: '#171717'}} to='/headphones'>Headphones</Link></li>
 			</ul>
 			<div id='navbar-right'>
-				<Link to='/login'><button id='login-btn'>Login</button></Link>
+				{localStorage.getItem('auth-token') ? 
+				<Link to='/login'><button id='login-btn' onClick={() => deleteData()}>Signout</button></Link> : 
+				<Link to='/login'><button id='login-btn'>Login</button></Link>}
 				<div id='cart'>
 					<Link to='/cart'><img src={cart} alt="" id='cart-icon'/></Link>
 					<p id='cart-num'>0</p>
