@@ -3,7 +3,16 @@ import './Popular.css'
 
 const Popular = () => {
 	return (
-		<div>Popular</div>
+		<div id='popular'>
+			<h1>Latest Products</h1>
+			<p>1</p>
+			<p>1</p>
+			<p>1</p>
+			<p>1</p>
+			<p>1</p>
+			<p>1</p>
+			<p>1</p>
+		</div>
 	)
 }
 

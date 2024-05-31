@@ -54,6 +54,11 @@
 			}
 		}
 
+		#settings{
+			width: 45px;
+			margin-top: -5px;
+		}
+
 		#login-btn{
 			width: 180px;
 			border-radius: 50px;
@@ -95,6 +100,11 @@
 					border-radius: 50px;
 					margin: -48px 25px;
 				}
+			}
+
+			#settings{
+				width: 35px;
+				margin-top: -5px;
 			}
 
 			#login-btn{
@@ -150,6 +160,12 @@
 				}
 			}
 
+			#settings{
+				width: 35px;
+				margin-top: -5px;
+				cursor: pointer;
+			}
+
 			#login-btn{
 				width: 100px;
 				border-radius: 30px;
@@ -180,7 +196,7 @@
 		}
 
 		#navbar-right{
-			gap: 100px;
+			gap: 50px;
 
 			#cart{
 				#cart-icon{
@@ -194,6 +210,11 @@
 					border-radius: 50px;
 					margin: -36px 18px;
 				}
+			}
+
+			#settings{
+				width: 25px;
+				margin-top: -5px;
 			}
 
 			#login-btn{

@@ -19,6 +19,21 @@
 			font-size: 100px;
 			font-weight: 700;
 		}
+
+		#arrow{
+			height: 20px;
+			background: #ff4141;
+			display: flex;
+			padding: 20px 30px;
+			font-size: 24px;
+			justify-content: center;
+			align-items: center;
+			width: 230px;
+			gap: 30px;
+			border-radius: 30px;
+			color: white;
+			cursor: pointer;
+		}
 	}
 	
 	#hero-right {
@@ -45,6 +60,15 @@
 			p{
 				font-size: 60px;
 			}
+
+			#arrow{
+				padding: 15px 20px;
+				font-size: 18px;
+				width: 180px;
+				gap: 20px;
+				border-radius: 30px;
+				color: white;
+			}
 		}
 
 		#hero-right{
@@ -66,6 +90,15 @@
 	
 			p{
 				font-size: 40px;
+			}
+
+			#arrow{
+				padding: 8px 12px;
+				font-size: 15px;
+				width: 130px;
+				gap: 10px;
+				border-radius: 30px;
+				color: white;
 			}
 		}
 
@@ -90,6 +123,15 @@
 	
 			p{
 				font-size: 50px;
+			}
+
+			#arrow{
+				padding: 15px 25px;
+				font-size: 18px;
+				width: 150px;
+				gap: 15px;
+				border-radius: 30px;
+				color: white;
 			}
 		}
 

@@ -1,0 +1,161 @@
+#body{
+	padding: 50px 0;
+	background: #ADD8E6;
+	width: 100%;
+	height: 80vh;
+
+	#main-form{
+		max-width: 600px;
+		margin: 0 auto;
+		padding: 60px 40px 100px 40px;
+		text-align: center;
+		background: white;
+		gap: 20px;
+
+		h1{
+			font-size: 40px;
+			margin-bottom: 30px;
+		}
+		
+		#fields{
+			display: flex;
+			flex-direction: column;
+			gap: 30px;
+
+			input{
+				width: 90%;
+				padding: 30px;
+				font-size: 18px;
+				margin: 0 auto;
+				border: 1px solid #c9c9c9;
+				color: #5c5c5c;
+			}
+		}
+
+		button{
+			width: 100%;
+			margin-top: 30px;
+			height: 72px;
+			color: white;
+			background: #ff4141;
+			font-size: 24px;
+			font-weight: 500;
+			border: 2px solid #ff4141;
+			cursor: pointer;
+		}
+
+		#terms{
+			text-align: left;
+			margin-top: 20px;
+			font-size: 18px;
+
+			span{
+				color: #ff4141;
+				margin-left: 10px;
+				font-size: 18px;
+				font-weight: 600;
+				cursor: pointer;
+			}
+		}
+	}
+}
+
+@media(max-width: 800px){
+	#body{
+		padding-top: 130px;
+
+		#main-form{
+			max-width: 450px;
+			padding: 40px 20px 60px 20px;
+			gap: 20px;
+
+			h1{
+				font-size: 30px;
+				margin-bottom: 15px;
+			}
+
+			#fields{
+				gap: 15px;
+
+				input{
+					max-width: 90%;
+					padding: 15px;
+					font-size: 16px;
+				}
+			}
+
+			button{
+				max-width: 98%;
+				padding: 5px 0;
+				font-size: 16px;
+				height: 50px;
+				display: flex;
+				justify-content: center;
+				align-items: center;
+				margin: 0 auto;
+				margin-top: 20px;
+			}
+
+			#terms{
+				font-size: 14px;
+				margin-left: 5px;
+
+				span{
+					font-size: 14px;
+				}
+			}
+	
+		}
+
+	}
+}
+
+@media(max-width: 500px){
+	#body{
+		padding-top: 130px;
+
+		#main-form{
+			max-width: 300px;
+			padding: 40px 20px 60px 20px;
+			gap: 20px;
+
+			h1{
+				font-size: 22px;
+				margin-bottom: 15px;
+			}
+
+			#fields{
+				gap: 10px;
+
+				input{
+					max-width: 90%;
+					padding: 5px;
+					font-size: 12px;
+				}
+			}
+
+			button{
+				max-width: 94%;
+				padding: 0px 0;
+				font-size: 12px;
+				height: 30px;
+				display: flex;
+				justify-content: center;
+				align-items: center;
+				margin: 0 auto;
+				margin-top: 10px;
+			}
+
+			#terms{
+				font-size: 10px;
+				margin-left: 10px;
+
+				span{
+					font-size: 10px;
+				}
+			}
+	
+		}
+
+	}
+}
