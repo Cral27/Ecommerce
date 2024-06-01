@@ -11,6 +11,11 @@ const Navbar = () => {
 
 	const deleteData = () => {
 		localStorage.clear()
+		move(); //to refresh the page immediately
+	}
+
+	const move = () => {
+		window.location.replace('/login')
 	}
 
   	return (
