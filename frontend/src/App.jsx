@@ -8,6 +8,9 @@ import Cart from './Pages/Cart'
 import LoginSignup from './Pages/LoginSignup'
 import Footer from './Components/Footer/Footer'
 import Settings from './Pages/Settings'
+import Admin from './Components/Admin/Admin'
+import AddProduct from './Components/AddProduct/AddProduct'
+import RemoveProduct from './Components/RemoveProduct/RemoveProduct'
 
 function App() {
   const [count, setCount] = useState(0)
@@ -26,7 +29,12 @@ function App() {
 					</Route>
 					<Route path='/cart' element={<Cart />}></Route>
 					<Route path='/login' element={<LoginSignup />}></Route>
-					<Route path='/settings' element={<Settings />}></Route>
+					<Route path='/settings' element={<Settings />}>
+						<Route path='admin' element={<Admin />}></Route>
+						<Route path='addproduct' element={<AddProduct />}></Route>
+						<Route path='removeproduct' element={<RemoveProduct />}></Route>
+					</Route>
+					
 				</Routes>
 				<Footer />
 			</BrowserRouter>
