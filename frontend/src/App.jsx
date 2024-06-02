@@ -1,5 +1,5 @@
 import { useState } from 'react'
-import { BrowserRouter, Routes, Route } from 'react-router-dom'
+import { BrowserRouter, Routes, Route, Navigate } from 'react-router-dom'
 import Navbar from './Components/Navbar/Navbar'
 import Shop from './Pages/Shop'
 import ShopCategory from './Pages/ShopCategory'
@@ -30,11 +30,11 @@ function App() {
 					<Route path='/cart' element={<Cart />}></Route>
 					<Route path='/login' element={<LoginSignup />}></Route>
 					<Route path='/settings' element={<Settings />}>
+						<Route index element={<Navigate to="/settings/productlist" replace />} /> {/* Redirect default route */}
 						<Route path='admin' element={<Admin />}></Route>
 						<Route path='addproduct' element={<AddProduct />}></Route>
-						<Route path='removeproduct' element={<RemoveProduct />}></Route>
+						<Route path='productlist' element={<RemoveProduct />}></Route>
 					</Route>
-					
 				</Routes>
 				<Footer />
 			</BrowserRouter>

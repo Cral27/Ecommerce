@@ -1,3 +1,9 @@
 #settings-main{
 	display: flex;
 }
+
+@media(max-width: 800px){
+	#settings-main{
+		flex-direction: column;
+	}
+}

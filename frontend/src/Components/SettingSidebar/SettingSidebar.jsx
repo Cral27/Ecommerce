@@ -20,7 +20,7 @@ const SettingSidebar = () => {
 				<p>Add Product</p>
 			</div>
 		</Link>
-		<Link to='/settings/removeproduct' style={{textDecoration: "none", color: 'black'}}>
+		<Link to='/settings/productlist' style={{textDecoration: "none", color: 'black'}}>
 			<div className='sidebar-item'>
 				<img src={product_icon} alt="" />
 				<p>Product List</p>

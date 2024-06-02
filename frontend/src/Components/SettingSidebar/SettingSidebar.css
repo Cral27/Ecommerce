@@ -7,7 +7,7 @@
 	max-width: 250px;
 	height: 100vh;
 	background: white;
-	outline: 1px solid red;
+	outline: 1px solid #ebebeb;
 
 	.sidebar-item{
 		display: flex;
@@ -23,6 +23,24 @@
 		img{
 			width: 80px;
 			height: 50px;
+		}
+	}
+}
+
+@media(max-width: 800px){
+	#sidebar-main{
+		display: flex;
+		flex-direction: row;
+		margin-top: 50px;
+		height: 100px;
+		max-width: 800px;
+		justify-content: center;
+		align-items: center;
+
+		.sidebar-item{			
+			p{
+				display: none;
+			}
 		}
 	}
 }
