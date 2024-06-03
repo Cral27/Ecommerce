@@ -57,6 +57,7 @@
 		#settings{
 			width: 45px;
 			margin-top: -5px;
+			cursor: pointer;
 		}
 
 		#login-btn{

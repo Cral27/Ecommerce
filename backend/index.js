@@ -154,6 +154,39 @@ app.get('/fetchusers', async (req, res) => {
 	}
 })
 
+//fetchuser middleware
+const fetchUser = async (req, res, next) => {
+	const token = req.header('auth-token')
+	if(!token){
+		return res.status(401).send({ errors: 'Users does not exist' })
+	}
+
+	try{
+		const data = jwt.verify(token, 'secret_code')
+		const user = await Users.findById(data.user.id)
+		if(!user){
+			return res.status(404).send({ errors: "User does not exist" })
+		}
+		req.user = user
+		next()
+	} catch(err) {
+		return res.status(401).send({ erorrs: 'Please use a valid token' })
+	}
+}
+
+const isAdmin = (req, res, next) => {
+	if(req.user && req.user.isAdmin){
+		res.send({ isAdmin: true })
+	}else{
+		res.send({ isAdmin: false })
+	}
+}
+
+//fetch isAdmin
+app.get('/checkadmin', fetchUser, isAdmin, (req, res) => {
+	console.log('Code running')
+})
+
 //Remove user
 app.post('/removeuser', async (req, res) => {
 	try{

@@ -1,5 +1,5 @@
 import React, { useState } from 'react'
-import { Link } from 'react-router-dom'
+import { Link, useNavigate } from 'react-router-dom'
 import './Navbar.css'
 import cart from '../Assets/cart_icon.png'
 import logo from '../Assets/techshop.png'
@@ -8,6 +8,7 @@ import settings from '../Assets/settings.png'
 const Navbar = () => {
 
 	const [selected, setSelected] = useState('all')
+	const navigate = useNavigate()
 
 	const deleteData = () => {
 		localStorage.clear()
@@ -16,6 +17,14 @@ const Navbar = () => {
 
 	const move = () => {
 		window.location.replace('/login')
+	}
+
+	const checkLogin = () => {
+		if(localStorage.getItem('auth-token')){
+			navigate('/settings')
+		}else{
+			alert('Login First Before Proceeding')
+		}
 	}
 
   	return (
@@ -35,7 +44,7 @@ const Navbar = () => {
 					<Link to='/cart'><img src={cart} alt="" id='cart-icon'/></Link>
 					<p id='cart-num'>0</p>
 				</div>
-				<Link to='/settings'><img src={settings} alt="" id='settings'/></Link>
+				<img src={settings} alt="" id='settings' onClick={checkLogin}/>
 			</div>
 		</div>
 	)

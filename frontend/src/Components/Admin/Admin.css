@@ -9,10 +9,10 @@
 
 	#user-list-format{
 		display: grid;
-		grid-template-columns: 1fr 1fr 1fr 1fr 2fr 1fr;
+		grid-template-columns: repeat(6, 1fr);
 		gap: 20px;
 		text-align: center;
-		width: 100%;
+		width: 90%;
 		padding: 20px 0;
 		color: #454545;
 		font-size: 15px;
@@ -24,14 +24,15 @@
 		align-items: center;
 		font-weight: 500;
 		background: white;
+		width: 100%;
 
 		.usersformat-users-main{
 			display: grid;
-			grid-template-columns: 1fr 1fr 1fr 1fr 2fr 1fr;
+			grid-template-columns: repeat(6, 1fr);
 			text-align: center;
 			color: #454545;
 			width: 100%;
-			gap: 15px;
+			gap: 20px;
 			padding: 20px 0px;
 			font-size: 15px;
 			font-weight: 500;
@@ -48,7 +49,7 @@
 	}
 
 	hr{
-		width: 99%;
+		width: 100%;
 		height: 1px;
 		background: #c5c5c5;;
 	}
