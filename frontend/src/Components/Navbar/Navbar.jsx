@@ -1,13 +1,15 @@
-import React, { useState } from 'react'
+import React, { useContext, useState } from 'react'
 import { Link, useNavigate } from 'react-router-dom'
 import './Navbar.css'
 import cart from '../Assets/cart_icon.png'
 import logo from '../Assets/techshop.png'
 import settings from '../Assets/settings.png'
+import { ShopContext } from '../../ShopContext/ShopContext'
 
 const Navbar = () => {
 
 	const [selected, setSelected] = useState('all')
+	const {getTotalCartItems} = useContext(ShopContext)
 	const navigate = useNavigate()
 
 	const deleteData = () => {
@@ -42,7 +44,7 @@ const Navbar = () => {
 				<Link to='/login'><button id='login-btn'>Login</button></Link>}
 				<div id='cart'>
 					<Link to='/cart'><img src={cart} alt="" id='cart-icon'/></Link>
-					<p id='cart-num'>0</p>
+					<p id='cart-num'>{getTotalCartItems()}</p>
 				</div>
 				<img src={settings} alt="" id='settings' onClick={checkLogin}/>
 			</div>

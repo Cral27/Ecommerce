@@ -28,6 +28,7 @@ app.get('/', (req, res) => {
 	res.send("Express App is running")
 })
 
+/* For Users API */
 //Schema for users model
 const Users = mongoose.model('Users2', {
 	name: {
@@ -174,7 +175,7 @@ const fetchUser = async (req, res, next) => {
 	}
 }
 
-const isAdmin = (req, res, next) => {
+const isAdmin = (req, res) => {
 	if(req.user && req.user.isAdmin){
 		res.send({ isAdmin: true })
 	}else{
@@ -185,6 +186,42 @@ const isAdmin = (req, res, next) => {
 //fetch isAdmin
 app.get('/checkadmin', fetchUser, isAdmin, (req, res) => {
 	console.log('Code running')
+})
+
+//fetch user info
+app.get('/fetchuser', fetchUser, (req, res) => {
+	if(req.user){
+		res.send({ user: req.user })
+	} else{
+		return res.status(400).send({ errors: 'User not found' })
+	}
+})
+
+//update user info
+app.post('/updatedata', fetchUser, async (req, res) => {
+
+	if(req.body.password){
+		try{
+			const { name, email, password } = req.body;
+			const hashedPassword = md5(password)
+	
+			let updateUser = await Users.findByIdAndUpdate(
+				req.user.id, 
+				{
+					$set: { name, email, password: hashedPassword },
+				},
+				{ new: true }
+			)
+	
+			res.json(updateUser)
+		} catch(err) {
+			res.status(500).send({ errors: 'Error updating data' })
+		}
+	} else{
+		return res.status(404).send({ errors: 'Please Provide a Password' })
+	}
+	
+
 })
 
 //Remove user
@@ -203,6 +240,7 @@ app.post('/removeuser', async (req, res) => {
 	}
 })
 
+/* For Multer/Upload of images */
 //Using Multer for images
 const storage = multer.diskStorage({
 	destination: 'upload/images',
@@ -229,6 +267,8 @@ app.post('/upload', upload.single('product'), (req, res) => {
 	})
 })
 
+
+/* For Products API */
 //Schema for products 2
 const Product = mongoose.model('Product2', {
 	id: {
@@ -324,6 +364,15 @@ app.post('/removeproduct', async (req, res) => {
 	}
 })
 
+/* For Cart API */
+//Adding Products to cart
+app.post('/addtocart', fetchUser, async (req, res) => {
+	let userData = await Users.findOne({ _id: req.user.id })
+	userData.cartData[req.body.itemId] += 1
+	await Users.findOneAndUpdate({ _id: req.user.id }, { cartData: userData.cartData })
+	res.send("Added to cart")
+})
+
 //Fetch all products
 app.get('/allproducts', async (req, res) => {
 	try{
@@ -334,6 +383,23 @@ app.get('/allproducts', async (req, res) => {
 		console.error('Error fetching products: ',err)
 		res.status(500).json({success: false, error: err.message})
 	}
+})
+
+//removing products from cart
+app.post('/removefromcart', fetchUser, async(req, res) => {
+	let userData = await Users.findOne({ _id: req.user.id })
+	if(userData.cartData[req.body.itemId] > 0){
+		userData.cartData[req.body.itemId] = 0;
+		await Users.findOneAndUpdate({ _id: req.user.id }, {cartData: userData.cartData});
+	}
+
+	res.send(`Removed Product`)
+})
+
+//fetch Cart Data
+app.post('/getcart', fetchUser, async (req, res) => {
+	let userData = await Users.findOne({ _id: req.user.id })
+	res.json(userData.cartData)
 })
 
 //run the api

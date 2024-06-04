@@ -21,7 +21,6 @@ const Admin = () => {
 			},
 			body: JSON.stringify({ id: id })
 		})
-		console.log(id)
 		await fetchUsers();
 	}
 

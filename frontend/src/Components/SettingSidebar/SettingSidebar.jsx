@@ -1,51 +1,19 @@
-import React, { useEffect, useState } from 'react'
+import React, { useContext, useEffect, useState } from 'react'
 import './SettingSidebar.css'
 import { Link } from 'react-router-dom'
 import product_icon from '../Assets/Product_list_icon.svg'
 import product_cart from '../Assets/Product_Cart.svg'
 import admin_icon from '../Assets/admin-logo.png'
+import user from '../Assets/user.png'
+import { ShopContext } from '../../ShopContext/ShopContext'
 
 const SettingSidebar = () => {
 
-	const [admin, setAdmin] = useState(null)
-
-	const adminStatus = async () => {
-		try{
-			const response = await fetch('http://localhost:3001/checkadmin', {
-				method: 'GET',
-				headers: {
-					'Content-Type': 'application/json',
-					'auth-token': localStorage.getItem('auth-token')
-				}
-			})
-
-			if(!response.ok){
-				throw new Error('Failed to fetch data')
-			}
-
-			const data = await response.json()
-			const isAdmin = data.isAdmin
-
-			console.log(`Is Admin status: ${isAdmin}`)
-
-			if(isAdmin){
-				setAdmin(isAdmin)
-				console.log('User is an admin')
-			}else{
-				console.log('User does not have qualifications')
-			}
-		} catch(err) {
-			console.error('Error checking admin status:', err.message);
-		}
-	}
-
-	useEffect(() => {
-		adminStatus();
-	}, [])
+	const { isAdmin } = useContext(ShopContext);
 
 	return (
 		<div id='sidebar-main'>
-			{admin ?
+			{ isAdmin ?
 				<>
 					<Link to='/settings/admin' style={{textDecoration: "none", color: 'black'}}>
 						<div className='sidebar-item'>
@@ -67,7 +35,12 @@ const SettingSidebar = () => {
 					</Link>
 				</>
 			: null}
-			<h1>Benis</h1>
+			<Link to='/settings/account' style={{textDecoration: "none", color: 'black'}}>
+				<div className='sidebar-item'>
+					<img src={user} alt="" id='user-icon'/>
+					<p>Account</p>
+				</div>
+			</Link>
 		</div>
 	)
 }
