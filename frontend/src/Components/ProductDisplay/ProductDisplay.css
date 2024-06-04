@@ -7,7 +7,7 @@
 		margin: 10px 100px;
 
 		#productDisplay-main-img{
-			width: 350px;
+			width: 480px;
 			height: 600px;
 		}
 	}
@@ -169,7 +169,7 @@
 
 		#productDisplay-left{
 			#productDisplay-main-img{
-				width: 250px;
+				width: 415px;
 				height: 500px;
 			}
 		}
@@ -220,7 +220,7 @@
 
 		#productDisplay-left{
 			#productDisplay-main-img{
-				width: 180px;
+				width: 291px;
 				height: 350px;
 			}
 		}
@@ -287,7 +287,7 @@
 
 		#productDisplay-left{
 			#productDisplay-main-img{
-				width: 120px;
+				width: 212px;
 				height: 250px;
 			}
 		}

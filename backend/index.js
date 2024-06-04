@@ -402,6 +402,15 @@ app.post('/getcart', fetchUser, async (req, res) => {
 	res.json(userData.cartData)
 })
 
+//fetch Latest products
+app.get('/latestproducts', async(req, res) => {
+	let products = await Product.find({})
+	let latest = products.slice(1).slice(-4)
+
+	console.log('New Collections Fetched')
+	res.send(latest)
+})
+
 //run the api
 app.listen(port, (err) => {
 	if(!err){

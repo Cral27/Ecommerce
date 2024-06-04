@@ -11,7 +11,7 @@
 				<p>New</p>
 				<p>Quality Audio</p>
 				<p>For Everyone</p>
-				<a href="#popular" style={{textDecoration: 'none'}}>
+				<a href="#latest" style={{textDecoration: 'none'}}>
 					<div id='arrow'>
 						<div>Latest Drops</div>
 						<img src={arrow} alt="Arrow-icon" id='arrow-icon'/>
