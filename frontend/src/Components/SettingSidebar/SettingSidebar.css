@@ -41,11 +41,21 @@
 		max-width: 800px;
 		justify-content: center;
 		align-items: center;
+		display: grid;
+		gap: 10px;
+		grid-template-columns: repeat(4, 1fr);
 
 		.sidebar-item{			
+			margin: 0;
 			p{
 				display: none;
 			}
 		}
+	}
+}
+
+@media(max-width: 500px){
+	#sidebar-main{
+		margin-top: 20px;
 	}
 }

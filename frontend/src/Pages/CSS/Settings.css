@@ -1,6 +1,13 @@
 #settings-main{
 	display: flex;
 	width: 100%;
+
+	#right{
+		display: flex;
+		flex: 1;
+		width: 100%;
+		justify-content: center;
+	}
 }
 
 @media(max-width: 800px){

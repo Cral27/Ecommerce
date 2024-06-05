@@ -1,10 +1,12 @@
-import React, { useContext } from 'react'
+import React, { useContext, useState } from 'react'
 import './CartItems.css'
 import { ShopContext } from '../../ShopContext/ShopContext'
 import cross from '../Assets/cross_icon_nobg.png'
 
 const CartItems = () => {
-	const {all_product, cartItems, removeFromCart, getTotalCartAmount} = useContext(ShopContext)
+	const {all_product, cartItems, removeFromCart, getTotalCartAmount, removeAllItems} = useContext(ShopContext)
+	const [promoCode, setPromoCode] = useState('')
+	const [code, setCode] = useState('')
 
 	return (
 		<div id='cartItems'>
@@ -51,16 +53,16 @@ const CartItems = () => {
 						<hr />
 						<div className="cartItems-total-item">
 							<h3>Total</h3>
-							<h3>${getTotalCartAmount()}</h3>
+							<h3>${getTotalCartAmount() - (code === 'TECHSHOP' ? getTotalCartAmount() * 0.5 : 0)}</h3>
 						</div>
 					</div>
-					<button>PROCEED TO CHECKOUT</button>
+					<button onClick={() => removeAllItems()}>PROCEED TO CHECKOUT</button>
 				</div>
 				<div className='cartItems-promo-code'>
 					<p>If you have a promo code, Enter it here</p>
 					<div className="cartItems-promo-box">
-						<input type="text" placeholder='PROMO CODE'/>
-						<button>Submit</button>
+						<input type="text" placeholder='USE CODE TECHSHOP FOR 50% OFF' value={promoCode} onChange={(e) => setPromoCode(e.target.value)}/>
+						<button onClick={() => {setCode(promoCode); setPromoCode('')}}>Submit</button>
 					</div>
 				</div>
 			</div>

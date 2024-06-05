@@ -393,7 +393,7 @@ app.post('/removefromcart', fetchUser, async(req, res) => {
 		await Users.findOneAndUpdate({ _id: req.user.id }, {cartData: userData.cartData});
 	}
 
-	res.send(`Removed Product`)
+	res.send('Removed')
 })
 
 //fetch Cart Data
@@ -411,11 +411,29 @@ app.get('/latestproducts', async(req, res) => {
 	res.send(latest)
 })
 
+const getDefaultCart = () => {
+	let cart = {}
+	for(let i=0; i<100+1; i++){
+		cart[i] = 0
+	}
+	return cart
+}
+
+//removing all of the cart items
+app.post('/removeallitems', fetchUser, async (req, res) => {
+	let userData = await Users.findOne({ _id: req.user.id })
+	let empty = getDefaultCart()
+	userData.cartData = empty
+	await Users.findOneAndUpdate({ _id: req.user.id }, {cartData: userData.cartData});
+
+	res.send({ success: true})
+})
+
 //run the api
 app.listen(port, (err) => {
 	if(!err){
 		console.log(`Server running on Port ${port}`)
 	}else{
-		console.log(`Error: ${error}`)
+		console.log(`Error: ${err}`)
 	}
 })

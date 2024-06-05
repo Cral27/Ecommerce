@@ -2,7 +2,6 @@
 	display: flex;
 	flex-direction: column;
 	align-items: center;
-	gap: 10px;
 	margin: 100px 0 200px 0;
 
 	h1{
@@ -19,8 +18,48 @@
 	}
 
 	.popular-item{
+		display: grid;
+		grid-template-columns: repeat(4, 1fr);
 		margin-top: 50px;
-		display: flex;
 		gap: 30px;
+	}
+}
+
+@media(max-width: 1280px){
+	#latest{
+		.popular-item{
+			grid-template-columns: repeat(3, 1fr);
+		}
+	}
+}
+
+@media(max-width: 1024px){
+	#latest{
+		.popular-item{
+			grid-template-columns: repeat(2, 1fr);
+		}
+	}
+}
+
+@media(max-width: 800px){
+
+	#latest{
+
+		h1{
+			color: #171717;
+			font-size: 40px;
+			font-weight: 600;
+		}
+	
+		hr{
+			width: 200px;
+			height: 3px;
+			border-radius: 10px;
+			background: #252525;
+		}
+		
+		.popular-item{
+			grid-template-columns: repeat(1, 1fr);
+		}
 	}
 }

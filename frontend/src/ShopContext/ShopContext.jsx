@@ -65,7 +65,7 @@ const ShopContextProvider = (props) => {
 		}
 	}, [])
 
-	//addtocart bleh bleh
+	//addtocart 
 	const addToCart = (itemId, count) => {
 		setCartItems((prev) => ({...prev, [itemId]:prev[itemId]+count}))
 		if(localStorage.getItem('auth-token')){
@@ -101,16 +101,35 @@ const ShopContextProvider = (props) => {
 		}
 	}
 
+	//remove all items from cart
+	const removeAllItems = () => {
+		let empty = getDefaultCart()
+		setCartItems(empty)
+		if(localStorage.getItem('auth-token')){
+			fetch('http://localhost:3001/removeallitems', {
+				method: 'POST', 
+				headers: {
+					Accept: 'application/json',
+					'auth-token': `${localStorage.getItem('auth-token')}`,
+					'Content-Type': 'application/json',
+				},
+			})
+			.then((res) => res.json())
+			.then((data) => console.log(data))
+			.catch((error) => console.error('Error:', error));
+		}
+	}
+
 	//Get Cart Total Price
 	const getTotalCartAmount = () => {
 		let totalAmount = 0;
 		for(const item in cartItems){
 			if(cartItems[item] > 0){
 				let itemInfo = all_product.find((product) => product.id === Number(item))
-				totalAmount += itemInfo.new_price*cartItems[item]
+				totalAmount += itemInfo.new_price * cartItems[item];
 			}
 		}
-		return totalAmount
+		return totalAmount;
 	}
 
 	//Get the Number of Cart Items
@@ -125,7 +144,7 @@ const ShopContextProvider = (props) => {
 	}
 	
 
-	const contextValue = { isAdmin, all_product, cartItems, addToCart, removeFromCart, getTotalCartAmount, getTotalCartItems }
+	const contextValue = { isAdmin, all_product, cartItems, addToCart, removeFromCart, getTotalCartAmount, getTotalCartItems, removeAllItems }
 
 	return (
 		<ShopContext.Provider value={contextValue}>
