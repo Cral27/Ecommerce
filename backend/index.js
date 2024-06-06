@@ -6,6 +6,7 @@ const cors = require('cors')
 const jwt =  require('jsonwebtoken')
 const {validationResult, body} = require('express-validator');
 const md5 = require('md5')
+const serverless = require('serverless-http')
 
 const port = 3001;
 const app = express()
@@ -430,10 +431,13 @@ app.post('/removeallitems', fetchUser, async (req, res) => {
 })
 
 //run the api
-app.listen(port, (err) => {
-	if(!err){
-		console.log(`Server running on Port ${port}`)
-	}else{
-		console.log(`Error: ${err}`)
-	}
-})
+// app.listen(port, (err) => {
+// 	if(!err){
+// 		console.log(`Server running on Port ${port}`)
+// 	}else{
+// 		console.log(`Error: ${err}`)
+// 	}
+// })
+
+//for serverless
+module.exports.handler = serverless(app)
