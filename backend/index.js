@@ -31,7 +31,7 @@ app.get('/', (req, res) => {
 
 /* For Users API */
 //Schema for users model
-const UsersSchema = mongoose.model('Users2', {
+const Users = mongoose.models.Users2 || mongoose.model('Users2', {
 	name: {
 		type: String,
 		required: true,
@@ -58,8 +58,6 @@ const UsersSchema = mongoose.model('Users2', {
 		default: false,
 	}
 })
-
-const Users = defineModel('Users2', UsersSchema)
 
 //Endpoint for user when registering
 app.post('/signup', [
@@ -273,7 +271,7 @@ app.post('/upload', upload.single('product'), (req, res) => {
 
 /* For Products API */
 //Schema for products 2
-const ProductSchema = mongoose.model('Product2', {
+const Product = mongoose.models.Product2 || mongoose.model('Product2', {
 	id: {
 		type: Number,
 		required: true,
@@ -307,8 +305,6 @@ const ProductSchema = mongoose.model('Product2', {
 		default: true,
 	},
 })
-
-const Product = defineModel('Product2', ProductSchema)
 
 //adding product
 app.post('/addproduct', async (req, res) => {
